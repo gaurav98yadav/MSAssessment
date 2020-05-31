@@ -7,15 +7,12 @@ import { IndexComponent } from './components/indexpage/index/index.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {SocialLoginModule, AuthServiceConfig,GoogleLoginProvider} from 'angular5-social-login';
 import { NavigationComponent } from './components/navigation/navigation.component';
-import { QuestionComponent } from './components/question/question/question.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { AngularWebStorageModule } from 'angular-web-storage';
 import { HomeComponent } from './components/home/home.component';
 import { IndexnavigationComponent } from './components/indexnavigation/indexnavigation.component';
 import {NgbdModalContent } from './components/indexnavigation/indexnavigation.component';
-import { AskquestionComponent } from './components/askquestion/askquestion.component';
 import { startsWithPipe } from './customstart.pipes';
-import { CategoryComponent } from './components/category/category.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { ViewcategoryComponent } from './components/viewcategory/viewcategory.component';
 
@@ -35,12 +32,9 @@ const config=new AuthServiceConfig([
     IndexComponent,
     NavigationComponent,
     NgbdModalContent,
-    QuestionComponent,
     HomeComponent,
     IndexnavigationComponent,
-    AskquestionComponent,
     startsWithPipe,
-    CategoryComponent,
     NotfoundComponent,
     ViewcategoryComponent
     ],

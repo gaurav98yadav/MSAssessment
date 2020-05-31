@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { SessionStorageService } from 'angular-web-storage';
-import { QuestionService } from '../../providers/questionService/question.service'
 import { ProjectServiceService } from 'src/app/providers/project-service.service';
 
 @Component({
@@ -29,20 +28,14 @@ export class NavigationComponent implements OnInit {
   private matchquestion: any = []
   constructor(public session: SessionStorageService,
     private router: Router,
-    public projectService: ProjectServiceService,
-    public questionservice: QuestionService) {
+    public projectService: ProjectServiceService) {
     this.data[0] = this.session.get("1");
 }
 
   ngOnInit() {
 
   }
-  question() {
-    this.router.navigate(['/askquestion'])
-
-  }
-
-
+  
   logout() {
     this.session.remove("1");
     this.data[0] = this.session.get("1");
@@ -64,7 +57,11 @@ export class NavigationComponent implements OnInit {
       if(this.category==="Project")
       {
             this.projectService.addProject(1,this.session.get("1").empId,this.grad_id,this.categories.indexOf(this.category)+1,this.feedback,this.build_marks,this.process_marks,this.testing_marks).subscribe((res) => {
-            window.location.reload();
+              console.log(res);
+              if(res=="true")
+              window.location.reload();
+              else
+              console.log("Duplicate Entry");
         });
       }
       else
