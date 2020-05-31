@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <style>
+    .media:hover{
+        background-color: #34cfeb;
+        color: white;
+    }
+    </style>
+</head>
+
+<body>
+
+    <div class="container mt-3">
+        <h2>Great Grads</h2>
+
+        <table class="table table-hover ">
+            <thead class="thead-dark">
+              <tr>
+                <th>Grad_ID</th>
+                <th>Grad_Name</th>
+                <th>Grad_College</th>
+                <th>Grad_Location</th>
+                <th>Grad_Year</th>
+                <th>Grad Marks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor = "let grad of questions[0]">
+                <td>{{grad.grad_id}}</td>
+                <td>{{grad.grad_name}}</td>
+                <td>{{grad.grad_college}}</td>
+                <td>{{grad.grad_location}}</td>
+                <td>{{grad.grad_year}}</td>
+                <td>{{grad.total_marks}}</td>
+                
+              </tr>
+            </tbody>
+          </table>
+    </div>
+
+</body>
+
+</html>

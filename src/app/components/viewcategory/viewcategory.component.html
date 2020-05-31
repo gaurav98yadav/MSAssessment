@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <style>
+    .media:hover{
+        background-color: #34cfeb;
+        color: white;
+    }
+    </style>
+</head>
+
+<body>
+
+    <div class="container mt-3">
+        <h2>Great {{categories[categoryid-1]}} Marks of Grads </h2>
+        <table class="table table-hover ">
+            <thead class="thead-dark">
+              <tr>
+                <th>Grad_ID</th>
+                <th>Grad_Name</th>
+                <th>Trainer_ID</th>
+                <th>Total Marks</th>
+                <th>Trainer_Feedback</th>
+                <th> Assessment Type</th>
+                <th colspan="2">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor = "let assessment of questions[0]">
+                <td>{{assessment.grad_id}}</td>
+                <td>{{assessment.grad_name}}</td>
+                <td>{{assessment.trainer_id}}</td>
+                <td>{{assessment.final_marks}}</td>
+                <td>{{assessment.trainer_feedback}}</td>
+                <td>{{categories[categoryid-1]}}</td>
+                <div *ngIf="checkTrainer()"><td> <button>EDIT</button></td></div>    
+                <div *ngIf="checkTrainer()"><td> <button>DELETE</button></td></div>              
+              </tr>
+            </tbody>
+          </table>
+    </div>
+
+</body>
+
+</html>

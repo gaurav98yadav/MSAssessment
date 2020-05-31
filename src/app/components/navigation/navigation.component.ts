@@ -1,0 +1,103 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
+import { SessionStorageService } from 'angular-web-storage';
+import { QuestionService } from '../../providers/questionService/question.service'
+import { ProjectServiceService } from 'src/app/providers/project-service.service';
+
+@Component({
+  selector: 'app-navigation',
+  templateUrl: './navigation.component.html',
+  styleUrls: ['./navigation.component.css']
+})
+export class NavigationComponent implements OnInit {
+  public data: any = []
+  public display = "none";
+  categories = ["Quiz", "MCQ","Assignment","Project"]
+  danger = "none"
+  category: string = "";
+  questions: string = "";
+  description: string = "";
+  categorydisplay = "none";
+  grad_id: number = 0;
+  feedback: string = "";  
+  total_marks: number =0;
+  build_marks: number=0;
+  testing_marks:number=0;
+  process_marks:number=0;
+  assessment_type: number=0;
+
+  private matchquestion: any = []
+  constructor(public session: SessionStorageService,
+    private router: Router,
+    public projectService: ProjectServiceService,
+    public questionservice: QuestionService) {
+    this.data[0] = this.session.get("1");
+}
+
+  ngOnInit() {
+
+  }
+  question() {
+    this.router.navigate(['/askquestion'])
+
+  }
+
+
+  logout() {
+    this.session.remove("1");
+    this.data[0] = this.session.get("1");
+    this.session.set("3", true);
+    console.log(this.data)
+    this.router.navigate(['/'])
+  }
+  homeredirect() {
+    this.router.navigate(['/home'])
+
+  }
+  postassessment() {
+    if (this.grad_id == 0 || this.category === "" || this.feedback === "") {
+      this.danger = "block";
+    }
+    else {
+      this.danger = "none";
+
+      if(this.category==="Project")
+      {
+            this.projectService.addProject(1,this.session.get("1").empId,this.grad_id,this.categories.indexOf(this.category)+1,this.feedback,this.build_marks,this.process_marks,this.testing_marks).subscribe((res) => {
+            window.location.reload();
+        });
+      }
+      else
+      {
+        console.log(this.session.get("1"));
+        this.projectService.addAssessment(1,this.session.get("1").empId,this.grad_id,this.categories.indexOf(this.category)+1,this.feedback,this.total_marks).subscribe((res) => {
+            window.location.reload();
+        });
+      }
+    }
+  }
+
+  categoryselect(id: number) {
+    console.log(id);
+    this.categorydisplay = "none";
+    this.router.navigate(["viewcategory/" + id]).then(() => {
+      window.location.reload();
+    })
+  }
+  checkCategory(){
+    if(this.category=="Project")
+    return true;
+    else
+    return false;
+  }
+  opendropdown() {
+    if (this.categorydisplay === "none") {
+      this.categorydisplay = "block";
+
+    }
+    else {
+      this.categorydisplay = "none"
+    }
+
+  }
+}

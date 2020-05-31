@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Card</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <style>
+
+        .card-body {
+                    background-color: white;
+        }
+
+        .card-body:hover {
+            background-color: #03cafc;
+            color: white;
+        }
+    </style>
+</head>
+
+<body style="position:relative;">
+
+    <div class="container" style="padding-left:20px;padding-top: 20px;">
+        <button (click)="postcategory()" [style.display]="displaydone">done</button>
+        <h2>Category</h2>
+        <div class="card-deck">
+            <div class="card bg-primary">
+                <div class="card-body text-center" (click)="hrcategory()">
+                    <p class="card-text">HR</p>
+                    <i class="fas fa-users" style="font-size: 80px;"></i>
+                </div>
+            </div>
+            <div class="card bg-primary">
+                <div class="card-body text-center" (click)="techcategory()">
+                    <p class="card-text">Technical Stack</p>
+                    <i class="fas fa-laptop" style="font-size: 80px;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container"  style="padding-top: 20px;">
+        <h2>Sub Category</h2>
+        <div class="row">
+            <div *ngFor="let item of data;index as i" class="col-sm-4" style="padding-top: 10px;">
+                <div class="card bg-primary"  [style.color]="color[i]"  (click)="subcategory(item,i)">
+                    <div class="card-body text-center" [style.background-color]="background[i]">
+                        <p class="card-text">{{item}}</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+
+</html>

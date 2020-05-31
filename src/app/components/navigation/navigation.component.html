@@ -1,0 +1,250 @@
+<html>
+
+<head>
+    <title>Assessment</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <style>
+        .main {
+            width: 100%;
+            height: 100%;
+        }
+
+        .btn-google {
+            color: white;
+            background-color: #ea4335;
+        }
+
+        .header {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 10px;
+            padding-left: 10px;
+            overflow: hidden;
+            height: 80px;
+            background-color: #230924;
+        }
+
+        .logo {
+            order: 0;
+            display: block;
+            height: 100px;
+            padding: 0%;
+        }
+
+        .lgnbtn {
+            margin-left: auto;
+            order: 2;
+            display: block;
+            color: white;
+            text-align: center;
+            padding-right: 20px;
+        }
+
+        .Login {
+            background-color: #230924;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 4px;
+            color: white;
+        }
+
+        .profile {
+            order: 2;
+            display: block;
+            color: white;
+            text-align: center;
+            padding-right: 20px;
+            border-radius: 50%;
+        }
+
+        img {
+            height: inherit;
+        }
+
+        .ask {
+            background-color: #230924;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 4px;
+            color: white;
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+        }
+
+        .search {
+            background-color: white;
+            max-height: 200px;
+            width: inherit;
+            position: absolute;
+            overflow-y: scroll;
+            z-index: 0;
+            border: 1px solid;
+            border-color: #a8acbc #babdcc #c0c3d2;
+            margin-top: -25px;
+        }
+
+        .results {
+            list-style-type: none;
+            padding: 0;
+
+        }
+
+        .results li {
+            padding-left: 10px;
+        }
+
+        .results li:hover {
+            background-color: #338cdf;
+            color: #fff;
+            text-shadow: 0 -1px rgba(0, 0, 0, 0.3);
+            border-color: #2380dd #2179d5 #1a60aa;
+            background-color: #338cdf;
+
+        }
+        .dropdownbtn
+        {
+            background-color: #230924;
+            color: #fff;
+            height: 40px;
+            border: 1px;
+            border-radius: 8px;
+;
+            
+        }
+        .dropdown
+        {
+            margin: auto;
+            color: #fff;
+            text-align: center;
+            
+        }
+        .listcategory li:hover
+        {
+            background-color: #007bff;
+            color: #fff;
+            text-shadow: 0 -1px rgba(0, 0, 0, 0.3);
+            border-color: #2380dd #2179d5 #1a60aa;
+            
+        }
+        .listcategory{
+            padding: 0;
+            list-style: none;
+            position: fixed;
+            background-color: white;
+            border: 1px solid;
+            border-color: #a8acbc #babdcc #c0c3d2;
+            border-radius: 5%;         
+
+        }
+        .home{
+            color: #ffffff
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+            <div class="home" (click)="homeredirect()" style="cursor: pointer;">
+               <h2> Accolite University </h2>
+            </div>
+            <div class="dropdown">
+                <div >
+                    <button class="dropdownbtn" (click)="opendropdown()">Assessments<i style="padding-left: 10px;" class="fa fa-angle-down"></i></button>       
+                </div>
+                <div style="background-color: #fff;color: black;overflow-y: scroll;z-index: 0;">
+                    <ul [style.display]="categorydisplay" style="list-style: none;" class="listcategory">
+                        <li (click)="categoryselect(1)">
+                            Quiz 
+                        </li>
+                        <li (click)="categoryselect(2)">
+                            MCQ
+                        </li>
+                        <li (click)="categoryselect(3)">
+                            Assignments
+                        </li>
+                        <li (click)="categoryselect(4)">
+                            Project
+                        </li>
+                    </ul>
+                </div>
+        </div>
+            <button type="button" style="background-color: #230924 ;border-color: #230924;" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                Add Asssessment
+            </button>
+
+            <!-- The Modal -->
+            <div class="modal fade" id="myModal">
+                <div   class="modal-dialog modal-lg">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <span>Add Asssessment</span>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div class="question" style="display:flex;flex-direction: column;">
+                                <small class="text-danger" [style.display]="danger">*please enter all the details</small>
+                                <label>Grad_ID</label>
+                                <input type="text" [(ngModel)]="grad_id" place-holder="Enter Grad_ID">
+                            </div>
+                            <div class="category" style="display: flex;">
+                                <div class="form-group">
+                                    <label for="cat">Assessment Category</label>
+                                    <select class="form-control"  [(ngModel)]="category">
+                                        <option *ngFor="let item of categories" >{{item}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="textarea" style="display: flex;flex-direction: column;"*ngIf="checkCategory()">
+                                <label>Build Marks</label>
+                                <input type="text" [(ngModel)]="build_marks" place-holder="Enter Marks">
+                            </div>
+                            <div class="textarea" style="display: flex;flex-direction: column;"*ngIf="checkCategory()">
+                                <label>Process Marks</label>
+                                <input type="text" [(ngModel)]="process_marks" place-holder="Enter Marks">
+                            </div>
+                            <div class="textarea" style="display: flex;flex-direction: column;" *ngIf="checkCategory()"> 
+                                <label>Testing Marks</label>
+                                <input type="text" [(ngModel)]="testing_marks" place-holder="Enter Marks">
+                            </div>
+                            <div class="textarea" style="display: flex;flex-direction: column;"*ngIf="!checkCategory()">
+                                <label>Total Marks</label>
+                                <input type="text" [(ngModel)]="total_marks" place-holder="Enter Marks">
+                            </div>
+                            <div class="question" style="display:flex;flex-direction: column;">
+                                <label>Feedback</label>
+                                <input type="text" [(ngModel)]="feedback" place-holder="Enter Grad_ID">
+                            </div>
+
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" (click)="postassessment()">Submit</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="profile">
+                <img src="{{data[0].image}}" alt="Profile" style="width:45px;border-radius: 50%;">
+                <span style="padding-left: 10px;">{{data[0].name}}</span>
+                <span style="padding-left: 20px;cursor:pointer" (click)="logout()">Logout</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+{
+    "/forum/*": {
+        "target": "http://192.168.0.60:8080",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+      },
+      "/api/*": {
+        "target": "http://127.0.0.1:5000",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+      }
+}
