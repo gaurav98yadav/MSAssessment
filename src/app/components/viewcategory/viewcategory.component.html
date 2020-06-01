@@ -34,20 +34,73 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor = "let assessment of questions[0]">
+              <tr *ngFor = "let assessment of assessments[0],index as i">
                 <td>{{assessment.grad_id}}</td>
                 <td>{{assessment.grad_name}}</td>
                 <td>{{assessment.trainer_id}}</td>
                 <td>{{assessment.final_marks}}</td>
                 <td>{{assessment.trainer_feedback}}</td>
                 <td>{{categories[categoryid-1]}}</td>
-                <div *ngIf="checkTrainer()"><td> <button>EDIT</button></td></div>    
-                <div *ngIf="checkTrainer()"><td> <button>DELETE</button></td></div>              
-              </tr>
+                <td> <div *ngIf="checkTrainer(assessment.trainer_id)"><button type="button" style="background-color: #230924 ;border-color: #230924;" class="btn btn-primary" data-toggle="modal" data-target="#edit" (click)=setValues(i)>EDIT</button></div></td>  
+                       <!-- The Modal -->
+            <div class="modal fade" id="edit">
+                <div   class="modal-dialog modal-lg">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <span>Edit Asssessment</span>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div class="question" style="display:flex;flex-direction: column;">
+                                <label>Grad_ID</label>
+                                <label>{{grad_id}}</label>
+                            </div>
+                            <div class="category" style="display: flex;">
+                                <div class="form-group">
+                                    <label for="cat">Assessment Category</label><br>
+                                    <label>{{categories[categoryid-1]}}</label>
+                                </div>
+                            </div>
+                            <div class="textarea" style="display: flex;flex-direction: column;"*ngIf="categoryid==4">
+                                <label>Build Marks</label>
+                                <input type="text" [(ngModel)]="build_marks" place-holder="Enter Marks">
+                            </div>
+                            <div class="textarea" style="display: flex;flex-direction: column;"*ngIf="categoryid==4">
+                                <label>Process Marks</label>
+                                <input type="text" [(ngModel)]="process_marks" place-holder="Enter Marks">
+                            </div>
+                            <div class="textarea" style="display: flex;flex-direction: column;" *ngIf="categoryid==4"> 
+                                <label>Testing Marks</label>
+                                <input type="text" [(ngModel)]="testing_marks" place-holder="Enter Marks">
+                            </div>
+                            <div class="textarea" style="display: flex;flex-direction: column;"*ngIf="categoryid!=4">
+                                <label>Total Marks</label>
+                                <input type="text" [(ngModel)]="total_marks" place-holder="Enter Marks">
+                            </div>
+                            <div class="question" style="display:flex;flex-direction: column;">
+                                <label>Feedback</label>
+                                <input type="text" [(ngModel)]="trainer_feedback" place-holder="Enter Grad_ID">
+                            </div>
+
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" (click)="editassessment()">Submit</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+                <td> <div *ngIf="checkTrainer(assessment.trainer_id)"><button type="button" style="background-color: #230924 ;border-color: #230924;" class="btn btn-primary" data-toggle="modal" data-target="#myModal">DELETE</button></div></td>  
+                </tr>
             </tbody>
           </table>
-    </div>
-
+        </div>
 </body>
 
 </html>

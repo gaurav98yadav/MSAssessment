@@ -68,7 +68,13 @@ export class NavigationComponent implements OnInit {
       {
         console.log(this.session.get("1"));
         this.projectService.addAssessment(1,this.session.get("1").empId,this.grad_id,this.categories.indexOf(this.category)+1,this.feedback,this.total_marks).subscribe((res) => {
-            window.location.reload();
+          console.log(res);
+          if(res=="true")
+          window.location.reload();
+          else
+          console.log("Duplicate Entry");
+          window.alert("Assessment for this Student Already Exits, Try Editing it.");
+          window.location.reload();
         });
       }
     }
