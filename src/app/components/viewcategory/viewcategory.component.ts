@@ -17,7 +17,10 @@ export class ViewcategoryComponent implements OnInit {
   grad_id:number;
   showModal:boolean
   assessment_id:number;
-  total_marks;
+  total_marks:number;
+  build_marks:number;
+  testing_marks:number;
+  process_marks:number;
   trainer_id:number;
   categories = ["Quiz","MCQ","Assignment","Project"]
   
@@ -52,7 +55,7 @@ setValues(i:number)
   console.log(i);
   let ass= this.assessments[0];
   this.grad_id=ass[i].grad_id;
-  this.assessment_id=ass[i].grad_id;
+  this.assessment_id=ass[i].assessment_id;
   console.log(this.grad_id);
 
 }
@@ -67,7 +70,7 @@ setValues(i:number)
   }
   editassessment()
   {
-    this.projectservice.editAssessment(this.assessment_id,this.grad_id,this.categoryid,this.trainer_feedback,this.total_marks).subscribe((res) => {
+    this.projectservice.editAssessment(this.assessment_id,this.grad_id,this.categoryid,this.trainer_feedback,this.total_marks,this.build_marks,this.testing_marks,this.process_marks).subscribe((res) => {
       console.log(res);
       window.location.reload();
         });

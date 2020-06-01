@@ -24,13 +24,16 @@
         <table class="table table-hover ">
             <thead class="thead-dark">
               <tr>
-                <th>Grad_ID</th>
-                <th>Grad_Name</th>
-                <th>Trainer_ID</th>
+                <th>Grad ID</th>
+                <th>Grad Name</th>
+                <th>Trainer ID</th>
+                <th><div *ngIf="categoryid==4">Build Marks</div></th>
+                <th><div *ngIf="categoryid==4">Process Marks</div></th>
+                <th><div *ngIf="categoryid==4">Testing Marks</div></th>
                 <th>Total Marks</th>
-                <th>Trainer_Feedback</th>
+                <th>Trainer Feedback</th>
                 <th> Assessment Type</th>
-                <th colspan="2">Actions</th>
+                <th colspan="2" text-align="center">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -38,6 +41,9 @@
                 <td>{{assessment.grad_id}}</td>
                 <td>{{assessment.grad_name}}</td>
                 <td>{{assessment.trainer_id}}</td>
+                <td><div *ngIf="categoryid==4"><td>{{assessment.build_marks}}</div></td>
+                <td><div *ngIf="categoryid==4"><td>{{assessment.process_marks}}</div></td>
+                <td><div *ngIf="categoryid==4"><td>{{assessment.testing_marks}}</div></td>
                 <td>{{assessment.final_marks}}</td>
                 <td>{{assessment.trainer_feedback}}</td>
                 <td>{{categories[categoryid-1]}}</td>
@@ -96,8 +102,8 @@
                     </div>
                 </div>
             </div>
-                <td> <div *ngIf="checkTrainer(assessment.trainer_id)"><button type="button" style="background-color: #230924 ;border-color: #230924;" class="btn btn-primary" data-toggle="modal" data-target="#myModal">DELETE</button></div></td>  
-                </tr>
+                <td> <div *ngIf="checkTrainer(assessment.trainer_id)" else elseblock><button type="button" style="background-color: #230924 ;border-color: #230924;" class="btn btn-primary" data-toggle="modal" data-target="#myModal">DELETE</button></div><ng-template #elseBlock>Content to render when condition is false.</ng-template></td>  
+            </tr>
             </tbody>
           </table>
         </div>

@@ -32,13 +32,16 @@ export class ProjectServiceService {
     },
     )                                 
 }
-  editAssessment(assessment_id:number,grad_id:number,assessment_type:number,trainer_feedback:string,total_marks:number){
+  editAssessment(assessment_id:number,grad_id:number,assessment_type:number,trainer_feedback:string,total_marks:number,build_marks:number,testing_marks:number,process_marks:number){
     return  this.http.post<String>('forum/home/editAssessment',{
       assessment_id:assessment_id,
       grad_id:grad_id,
       final_marks:total_marks,
       assessment_type:assessment_type,
-      trainer_feedback:trainer_feedback
+      trainer_feedback:trainer_feedback,
+      build_marks:build_marks,
+      testing_marks:testing_marks,
+      process_marks:process_marks,
   },
   )                                 
 }

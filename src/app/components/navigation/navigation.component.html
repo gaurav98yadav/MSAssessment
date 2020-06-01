@@ -106,6 +106,7 @@
             background-color: #338cdf;
 
         }
+        
         .dropdownbtn
         {
             background-color: #230924;
@@ -153,11 +154,14 @@
             <div class="home" (click)="homeredirect()" style="cursor: pointer;">
                <h2> Accolite University </h2>
             </div>
+            <div class="md-form active-pink-2 mb-3">
+                <input style="padding-left: 10px" class="form-control" type="text" placeholder="Search" aria-label="Search">
+              </div>
             <div class="dropdown">
                 <div >
                     <button class="dropdownbtn" (click)="opendropdown()">Assessments<i style="padding-left: 10px;" class="fa fa-angle-down"></i></button>       
                 </div>
-                <div style="background-color: #fff;color: black;overflow-y: scroll;z-index: 0;">
+                <div style="background-color: #230924;color: black;overflow-y: scroll;z-index: 0;">
                     <ul [style.display]="categorydisplay" style="list-style: none;" class="listcategory">
                         <li (click)="categoryselect(1)">
                             Quiz 

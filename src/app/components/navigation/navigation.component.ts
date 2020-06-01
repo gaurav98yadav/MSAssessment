@@ -58,10 +58,14 @@ export class NavigationComponent implements OnInit {
       {
             this.projectService.addProject(1,this.session.get("1").empId,this.grad_id,this.categories.indexOf(this.category)+1,this.feedback,this.build_marks,this.process_marks,this.testing_marks).subscribe((res) => {
               console.log(res);
-              if(res=="true")
-              window.location.reload();
-              else
-              console.log("Duplicate Entry");
+          if(res)
+          window.location.reload();
+          else
+          {
+            console.log("Duplicate Entry");
+            window.alert("Assessment for this Student Already Exits, Try Editing it.");
+            window.location.reload();
+          }
         });
       }
       else
@@ -69,12 +73,14 @@ export class NavigationComponent implements OnInit {
         console.log(this.session.get("1"));
         this.projectService.addAssessment(1,this.session.get("1").empId,this.grad_id,this.categories.indexOf(this.category)+1,this.feedback,this.total_marks).subscribe((res) => {
           console.log(res);
-          if(res=="true")
+          if(res)
           window.location.reload();
           else
-          console.log("Duplicate Entry");
-          window.alert("Assessment for this Student Already Exits, Try Editing it.");
-          window.location.reload();
+          {
+            console.log("Duplicate Entry");
+            window.alert("Assessment for this Student Already Exits, Try Editing it.");
+            window.location.reload();
+          }
         });
       }
     }
