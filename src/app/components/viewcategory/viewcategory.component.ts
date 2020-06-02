@@ -23,6 +23,7 @@ export class ViewcategoryComponent implements OnInit {
   process_marks:number;
   trainer_id:number;
   categories = ["Quiz","MCQ","Assignment","Project"]
+  courses = ["React", "Angular","Java","SQL","React Native"]
   
   constructor( private router: Router,
     private route: ActivatedRoute,

@@ -3,7 +3,6 @@
 <head>
     <title>Assessment</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <style>
         .main {
             width: 100%;
@@ -154,9 +153,6 @@
             <div class="home" (click)="homeredirect()" style="cursor: pointer;">
                <h2> Accolite University </h2>
             </div>
-            <div class="md-form active-pink-2 mb-3">
-                <input style="padding-left: 10px" class="form-control" type="text" placeholder="Search" aria-label="Search">
-              </div>
             <div class="dropdown">
                 <div >
                     <button class="dropdownbtn" (click)="opendropdown()">Assessments<i style="padding-left: 10px;" class="fa fa-angle-down"></i></button>       
@@ -182,63 +178,74 @@
                 Add Asssessment
             </button>
 
-            <!-- The Modal -->
-            <div class="modal fade" id="myModal">
-                <div   class="modal-dialog modal-lg">
-                    <div class="modal-content">
+           <!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <!--Content-->
+  <div class="modal-content form-elegant">
+    <!--Header-->
+    <div class="modal-header text-center">
+      <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel"><strong>Add Assessment</strong></h3>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!--Body-->
+    <div class="modal-body mx-4">
+      <!--Body-->
+      <div class="md-form mb-5">
+        <label>Grad_ID</label>
+        <input type="text" class="form-control validate" required [(ngModel)]="grad_id">
+      </div> 
 
-                        <!-- Modal Header -->
-                        <div class="modal-header">
-                            <span>Add Asssessment</span>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
+      <div class="md-form mb-5">                             
+      <label for="cat">Assessment Category</label>
+      <select class="form-control"  [(ngModel)]="category">
+          <option *ngFor="let item of categories" >{{item}}</option>
+      </select>
+     </div>  
+     <div class="md-form mb-5">                             
+        <label for="cat">Course</label>
+        <select class="form-control"  [(ngModel)]="course">
+            <option *ngFor="let item of courses" >{{item}}</option>
+        </select>
+       </div>
+       <div class="md-form mb-5">
+        <label data-error="wrong" data-success="right" for="Form-email1">Test Name</label>
+        <input type="text" id="Form-email1" class="form-control validate" [(ngModel)]="test_name">
+      </div>    
+     <div class="md-form mb-5" *ngIf="checkCategory()">
+        <label data-error="wrong" data-success="right" for="Form-email1">Build Marks</label>
+        <input type="text" id="Form-email1" class="form-control validate" [(ngModel)]="build_marks">
+      </div>  
+      <div class="md-form mb-5" *ngIf="checkCategory()">
+        <label data-error="wrong" data-success="right" for="Form-email1">Process Marks</label>
+        <input type="text" id="Form-email1" class="form-control validate" [(ngModel)]="process_marks">
+      </div>  
+      <div class="md-form mb-5" *ngIf="checkCategory()" >
+        <label data-error="wrong" data-success="right" for="Form-email1">Testing Marks</label>
+        <input type="text" id="Form-email1" class="form-control validate" [(ngModel)]="testing_marks">
+      </div>  
+      <div class="md-form mb-5" *ngIf="!checkCategory()">
+        <label data-error="wrong" data-success="right" for="Form-email1">Total Marks</label>
+        <input type="text" id="Form-email1" class="form-control validate" [(ngModel)]="total_marks">
+      </div>  
+      <div class="md-form mb-5">
+        <label data-error="wrong" data-success="right" for="Form-email1">Feedback</label>
+        <input type="text" id="Form-email1" class="form-control validate" [(ngModel)]="trainer_feedback">
+      </div>
 
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                            <div class="question" style="display:flex;flex-direction: column;">
-                                <small class="text-danger" [style.display]="danger">*please enter all the details</small>
-                                <label>Grad_ID</label>
-                                <input type="text" [(ngModel)]="grad_id" place-holder="Enter Grad_ID">
-                            </div>
-                            <div class="category" style="display: flex;">
-                                <div class="form-group">
-                                    <label for="cat">Assessment Category</label>
-                                    <select class="form-control"  [(ngModel)]="category">
-                                        <option *ngFor="let item of categories" >{{item}}</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="textarea" style="display: flex;flex-direction: column;"*ngIf="checkCategory()">
-                                <label>Build Marks</label>
-                                <input type="text" [(ngModel)]="build_marks" place-holder="Enter Marks">
-                            </div>
-                            <div class="textarea" style="display: flex;flex-direction: column;"*ngIf="checkCategory()">
-                                <label>Process Marks</label>
-                                <input type="text" [(ngModel)]="process_marks" place-holder="Enter Marks">
-                            </div>
-                            <div class="textarea" style="display: flex;flex-direction: column;" *ngIf="checkCategory()"> 
-                                <label>Testing Marks</label>
-                                <input type="text" [(ngModel)]="testing_marks" place-holder="Enter Marks">
-                            </div>
-                            <div class="textarea" style="display: flex;flex-direction: column;"*ngIf="!checkCategory()">
-                                <label>Total Marks</label>
-                                <input type="text" [(ngModel)]="total_marks" place-holder="Enter Marks">
-                            </div>
-                            <div class="question" style="display:flex;flex-direction: column;">
-                                <label>Feedback</label>
-                                <input type="text" [(ngModel)]="feedback" place-holder="Enter Grad_ID">
-                            </div>
-
-                        </div>
-
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
-                            <button type="button" (click)="postassessment()">Submit</button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+      <div class="text-center mb-3">
+        <button type="button" (click)="postassessment()" class="btn blue-gradient btn-block btn-rounded z-depth-1a" >Submit</button>
+      </div>
+    </div>
+    <!--Footer-->
+  </div>
+  <!--/.Content-->
+</div>
+</div>
+<!-- Modal -->
             <div class="profile">
                 <img src="{{data[0].image}}" alt="Profile" style="width:45px;border-radius: 50%;">
                 <span style="padding-left: 10px;">{{data[0].name}}</span>

@@ -27,9 +27,13 @@
                 <th>Grad ID</th>
                 <th>Grad Name</th>
                 <th>Trainer ID</th>
-                <th><div *ngIf="categoryid==4">Build Marks</div></th>
-                <th><div *ngIf="categoryid==4">Process Marks</div></th>
-                <th><div *ngIf="categoryid==4">Testing Marks</div></th>
+                <th>Course</th> 
+                <th>Test Name</th>
+                <div *ngIf="categoryid==4">
+                <th>Build Marks </th>
+                <th>Process Marks</th>
+                <th>Testing Marks</th>
+                </div>
                 <th>Total Marks</th>
                 <th>Trainer Feedback</th>
                 <th> Assessment Type</th>
@@ -41,9 +45,13 @@
                 <td>{{assessment.grad_id}}</td>
                 <td>{{assessment.grad_name}}</td>
                 <td>{{assessment.trainer_id}}</td>
-                <td><div *ngIf="categoryid==4"><td>{{assessment.build_marks}}</div></td>
-                <td><div *ngIf="categoryid==4"><td>{{assessment.process_marks}}</div></td>
-                <td><div *ngIf="categoryid==4"><td>{{assessment.testing_marks}}</div></td>
+                <td>{{assessment.course}}</td>
+                <td>{{assessment.test_name}}</td>
+                <div *ngIf="categoryid==4">
+                <td>{{assessment.build_marks}}</td>
+                <td>{{assessment.process_marks}}</td>
+                <td>{{assessment.testing_marks}}</td>
+                </div>
                 <td>{{assessment.final_marks}}</td>
                 <td>{{assessment.trainer_feedback}}</td>
                 <td>{{categories[categoryid-1]}}</td>

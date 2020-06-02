@@ -8,7 +8,7 @@ export class ProjectServiceService {
 
   constructor(private http:HttpClient){ }
 
-  addProject(assessment_id:number,trainer_id:string,grad_id:number,assessment_type:number,trainer_feedback:string,build_marks:number,process_marks:number,testing_marks:number){
+  addProject(assessment_id:number,trainer_id:string,grad_id:number,assessment_type:number,trainer_feedback:string,build_marks:number,process_marks:number,testing_marks:number,course:string,test_name:string){
       return  this.http.post<String>('forum/home/addProject',{
           assessment_id:assessment_id,
           grad_id:grad_id,
@@ -17,18 +17,22 @@ export class ProjectServiceService {
           process_marks:process_marks,
           testing_marks:testing_marks,
           assessment_type:assessment_type,
-          trainer_feedback:trainer_feedback
+          trainer_feedback:trainer_feedback,
+          course:course,
+          test_name:test_name
       },
       )                                 
   }
-  addAssessment(assessment_id:number,trainer_id:number,grad_id:number,assessment_type:number,trainer_feedback:string,total_marks:number){
+  addAssessment(assessment_id:number,trainer_id:number,grad_id:number,assessment_type:number,trainer_feedback:string,total_marks:number,course:string,test_name:string){
     return  this.http.post<String>('forum/home/addAssessment',{
         assessment_id:assessment_id,
         grad_id:grad_id,
         trainer_id:trainer_id,
         final_marks:total_marks,
         assessment_type:assessment_type,
-        trainer_feedback:trainer_feedback
+        trainer_feedback:trainer_feedback,
+        course:course,
+        test_name:test_name
     },
     )                                 
 }

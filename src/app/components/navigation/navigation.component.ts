@@ -12,6 +12,9 @@ export class NavigationComponent implements OnInit {
   public data: any = []
   public display = "none";
   categories = ["Quiz", "MCQ","Assignment","Project"]
+  courses = ["React", "Angular","Java","SQL","React Native"]
+  course:string= "";
+  test_name:string="";
   danger = "none"
   category: string = "";
   questions: string = "";
@@ -48,15 +51,10 @@ export class NavigationComponent implements OnInit {
 
   }
   postassessment() {
-    if (this.grad_id == 0 || this.category === "" || this.feedback === "") {
-      this.danger = "block";
-    }
-    else {
-      this.danger = "none";
-
+    console.log("called");
       if(this.category==="Project")
       {
-            this.projectService.addProject(1,this.session.get("1").empId,this.grad_id,this.categories.indexOf(this.category)+1,this.feedback,this.build_marks,this.process_marks,this.testing_marks).subscribe((res) => {
+            this.projectService.addProject(1,this.session.get("1").empId,this.grad_id,this.categories.indexOf(this.category)+1,this.feedback,this.build_marks,this.process_marks,this.testing_marks,this.course,this.test_name).subscribe((res) => {
               console.log(res);
           if(res)
           window.location.reload();
@@ -71,7 +69,7 @@ export class NavigationComponent implements OnInit {
       else
       {
         console.log(this.session.get("1"));
-        this.projectService.addAssessment(1,this.session.get("1").empId,this.grad_id,this.categories.indexOf(this.category)+1,this.feedback,this.total_marks).subscribe((res) => {
+        this.projectService.addAssessment(1,this.session.get("1").empId,this.grad_id,this.categories.indexOf(this.category)+1,this.feedback,this.total_marks,this.course,this.test_name).subscribe((res) => {
           console.log(res);
           if(res)
           window.location.reload();
@@ -84,7 +82,6 @@ export class NavigationComponent implements OnInit {
         });
       }
     }
-  }
 
   categoryselect(id: number) {
     console.log(id);
