@@ -60,7 +60,12 @@ setValues(i:number)
   console.log(this.grad_id);
 
 }
-
+deleteAssessment(assessment_id:number,final_marks:number,grad_id:number)
+{
+  this.projectservice.deleteAssessment(assessment_id,grad_id,final_marks,this.categoryid).subscribe(() =>{
+    window.location.reload();
+  });
+}
   checkTrainer(trainer_id:number)
   {
     console.log(trainer_id)

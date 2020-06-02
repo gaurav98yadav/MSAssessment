@@ -110,7 +110,7 @@
                     </div>
                 </div>
             </div>
-                <td> <div *ngIf="checkTrainer(assessment.trainer_id)" else elseblock><button type="button" style="background-color: #230924 ;border-color: #230924;" class="btn btn-primary" data-toggle="modal" data-target="#myModal">DELETE</button></div><ng-template #elseBlock>Content to render when condition is false.</ng-template></td>  
+                <td> <div *ngIf="checkTrainer(assessment.trainer_id)" else elseblock><button type="button" style="background-color: #230924 ;border-color: #230924;" class="btn btn-primary" (click)=deleteAssessment(assessment.assessment_id,assessment.final_marks,assessment.grad_id)>DELETE</button></div><ng-template #elseBlock>Content to render when condition is false.</ng-template></td>  
             </tr>
             </tbody>
           </table>

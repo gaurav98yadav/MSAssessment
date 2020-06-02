@@ -49,4 +49,13 @@ export class ProjectServiceService {
   },
   )                                 
 }
+deleteAssessment(assessment_id:number,grad_id:number,total_marks:number,assessment_type:number){
+  return  this.http.post<String>('forum/home/deleteAssessment',{
+    assessment_id:assessment_id,
+    final_marks:total_marks,
+    grad_id:grad_id,
+    assessment_type:assessment_type
+},
+)                                 
+}
 }

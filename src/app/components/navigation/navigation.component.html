@@ -118,10 +118,7 @@
         }
         .dropdown
         {
-            margin: auto;
-            color: #fff;
-            text-align: center;
-            
+            margin:auto;
         }
         .listcategory li:hover
         {
@@ -142,7 +139,8 @@
 
         }
         .home{
-            color: #ffffff
+            color: #ffffff;
+            margin-right:400px;
         }
     </style>
 </head>
@@ -150,31 +148,43 @@
 <body>
     <div class="main">
         <div class="header">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn"  (click)="closeNav()">&times;</a>
+                <nav id="sidebar">     
+                    <ul class="list-unstyled components">
+                        <li>
+                            <a style="cursor: pointer;" (click)="categoryselect(1)">Quiz</a>
+                        </li>
+                        <li>
+                            <a style="cursor: pointer;" (click)="categoryselect(2)">MCQ</a>
+                        </li>
+                        <li>
+                            <a style="cursor: pointer;" (click)="categoryselect(3)">Assignments</a>
+                        </li>
+                        <li>
+                            <a style="cursor: pointer;" (click)="categoryselect(4)">Project</a>
+                        </li>
+                    </ul>
+            
+                </nav>
+              </div>
+              <button class="openbtn" style="background-color: #230924 ;border-color: #230924;" (click)="openNav()">
+              <div class="ddiv"></div>
+              <div class="ddiv"></div>
+              <div class="ddiv"></div>
+            </button>
             <div class="home" (click)="homeredirect()" style="cursor: pointer;">
                <h2> Accolite University </h2>
             </div>
             <div class="dropdown">
-                <div >
-                    <button class="dropdownbtn" (click)="opendropdown()">Assessments<i style="padding-left: 10px;" class="fa fa-angle-down"></i></button>       
+                    <div class="d-flex justify-content-center">
+                      <div class="searchbar">
+                        <input class="search_input" type="text" name="" placeholder="Search...">
+                        <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+                      </div>
+                    </div>
                 </div>
-                <div style="background-color: #230924;color: black;overflow-y: scroll;z-index: 0;">
-                    <ul [style.display]="categorydisplay" style="list-style: none;" class="listcategory">
-                        <li (click)="categoryselect(1)">
-                            Quiz 
-                        </li>
-                        <li (click)="categoryselect(2)">
-                            MCQ
-                        </li>
-                        <li (click)="categoryselect(3)">
-                            Assignments
-                        </li>
-                        <li (click)="categoryselect(4)">
-                            Project
-                        </li>
-                    </ul>
-                </div>
-        </div>
-            <button type="button" style="background-color: #230924 ;border-color: #230924;" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+            <button type="button"  style="margin-right:20px; background-color: #230924 ;border-color: white;" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
                 Add Asssessment
             </button>
 
@@ -233,7 +243,7 @@ aria-hidden="true">
       </div>  
       <div class="md-form mb-5">
         <label data-error="wrong" data-success="right" for="Form-email1">Feedback</label>
-        <input type="text" id="Form-email1" class="form-control validate" [(ngModel)]="trainer_feedback">
+        <input type="text" id="Form-email1" class="form-control validate" [(ngModel)]="feedback">
       </div>
 
       <div class="text-center mb-3">

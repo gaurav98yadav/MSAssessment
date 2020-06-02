@@ -9,10 +9,12 @@ import {SocialLoginModule, AuthServiceConfig,GoogleLoginProvider} from 'angular5
 import { NavigationComponent } from './components/navigation/navigation.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { AngularWebStorageModule } from 'angular-web-storage';
+import {LineChartComponent} from './components/line-chart/line-chart.component'
 import { HomeComponent } from './components/home/home.component';
 import { IndexnavigationComponent } from './components/indexnavigation/indexnavigation.component';
 import {NgbdModalContent } from './components/indexnavigation/indexnavigation.component';
 import { startsWithPipe } from './customstart.pipes';
+import { ChartsModule } from 'ng2-charts';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { ViewcategoryComponent } from './components/viewcategory/viewcategory.component';
 
@@ -36,6 +38,7 @@ const config=new AuthServiceConfig([
     IndexnavigationComponent,
     startsWithPipe,
     NotfoundComponent,
+    LineChartComponent,
     ViewcategoryComponent
     ],
       entryComponents: [NgbdModalContent],
@@ -45,6 +48,7 @@ const config=new AuthServiceConfig([
     AppRoutingModule,
     NgbModule,
     SocialLoginModule,
+    ChartsModule,
     FormsModule,
     ReactiveFormsModule,
     AngularWebStorageModule,

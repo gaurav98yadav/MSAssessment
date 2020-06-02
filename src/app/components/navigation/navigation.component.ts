@@ -50,6 +50,15 @@ export class NavigationComponent implements OnInit {
     this.router.navigate(['/home'])
 
   }
+  openNav() {
+  console.log("something")
+  document.getElementById("mySidenav").style.width = "250px";
+  }
+  
+  closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  }
+
   postassessment() {
     console.log("called");
       if(this.category==="Project")
