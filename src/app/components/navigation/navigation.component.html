@@ -140,7 +140,6 @@
         }
         .home{
             color: #ffffff;
-            margin-right:400px;
         }
     </style>
 </head>
@@ -174,7 +173,7 @@
               <div class="ddiv"></div>
             </button>
             <div class="home" (click)="homeredirect()" style="cursor: pointer;">
-               <h2> Accolite University </h2>
+               <h2> Accolite University </h2> 
             </div>
             <div class="dropdown">
                     <div class="d-flex justify-content-center">
@@ -183,6 +182,11 @@
                         <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
                       </div>
                     </div>
+                </div>
+                <div style="margin-left: 50px;">
+                    <button type="button"  style="margin-right:20px; background-color: #230924 ;border-color: white;" class="btn btn-primary" (click)="viewTrends()">
+                    Trends
+                </button> 
                 </div>
             <button type="button"  style="margin-right:20px; background-color: #230924 ;border-color: white;" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
                 Add Asssessment
