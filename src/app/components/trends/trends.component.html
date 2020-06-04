@@ -1,7 +1,7 @@
-<div>
+<div class="container mt-3">
 <mat-tab-group (selectedTabChange)="test($event)">
         <mat-tab label="Course Wise Marks"> <app-bar-chart [dataX]="dataX" [dataY]="dataY"></app-bar-chart></mat-tab>
         <mat-tab label="Location Wise Marks"> <app-bar-chart [dataX]="dataX" [dataY]="dataY"></app-bar-chart></mat-tab>
-        <mat-tab label="Year Wise Marks"> <app-bar-chart [dataX]="dataX" [dataY]="dataY"></app-bar-chart> </mat-tab>
+        <mat-tab label="Year Wise Marks"> <app-line-chart [dataX]="dataX" [dataY]="dataY"></app-line-chart> </mat-tab>
 </mat-tab-group>
 </div>

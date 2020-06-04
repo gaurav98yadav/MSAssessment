@@ -1,8 +1,8 @@
 <div class="container" style="width: 50%; height: 40%;">
     <div class="chart-wrapper">
         <canvas baseChart 
-            [datasets]="lineChartData" 
-            [labels]="lineChartLabels" 
+            [data]="dataY" 
+            [labels]="dataX" 
             [options]="lineChartOptions"
             [colors]="lineChartColors" 
             [legend]="lineChartLegend" 
