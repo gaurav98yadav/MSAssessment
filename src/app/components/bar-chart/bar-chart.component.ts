@@ -21,16 +21,20 @@ export class BarChartComponent implements OnInit {
     scales : {
       yAxes: [{
          ticks: {
-            beginAtZero : true
-          }
+            beginAtZero : true},
+            gridLines: { color: 'rgba(255,255,255,0.1)' }
       }] 
     }
   };
-
+  colors: "blue";
   barChartLabels: Label[] = this.dataX;
   barChartType: ChartType = 'bar';
   barChartLegend = false;
   barChartPlugins = [];
+  public chartColors: any[] = [
+    { 
+      backgroundColor:["#FF7360", "#6FC8CE", "#FAFFF2", "#FFFCC4", "#B9E8E0"] 
+    }];
   myLabels = [];
   myExpense = [];
 

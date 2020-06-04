@@ -22,6 +22,7 @@ import {BarChartComponent} from './components/bar-chart/bar-chart.component'
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TrendsComponent } from './components/trends/trends.component';
+import { TrainingmaterialComponent } from './components/trainingmaterial/trainingmaterial.component';
 
 const config=new AuthServiceConfig([
   {
@@ -47,7 +48,8 @@ const config=new AuthServiceConfig([
     BarChartComponent,
     PieChartComponent,
     ViewcategoryComponent,
-    TrendsComponent
+    TrendsComponent,
+    TrainingmaterialComponent
     ],
       entryComponents: [NgbdModalContent],
   imports: [

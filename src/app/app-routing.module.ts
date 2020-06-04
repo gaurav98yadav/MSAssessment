@@ -8,12 +8,14 @@ import { SessionService } from './providers/sessionService/session.service'
 import {NotfoundComponent} from './components/notfound/notfound.component'
 import {LineChartComponent} from './components/line-chart/line-chart.component'
 import { ViewcategoryComponent } from './components/viewcategory/viewcategory.component';
+import { TrainingmaterialComponent } from './components/trainingmaterial/trainingmaterial.component';
 const routes: Routes = [
   { path: '', component: IndexComponent },
   { path: 'viewcategory/:categoryid', component: ViewcategoryComponent },
   { path: 'home', component: HomeComponent},
   { path: 'trends', component: TrendsComponent},
   {path: 'chart', component:LineChartComponent},
+  {path: 'trainingmaterial', component:TrainingmaterialComponent},
   { path: '**', component: NotfoundComponent }];
 
 @NgModule({

@@ -53,6 +53,9 @@ export class NavigationComponent implements OnInit {
   viewTrends(){
     this.router.navigate(['/trends'])
   }
+  viewTrainingMaterial(){
+    this.router.navigate(['/trainingmaterial'])
+  }
   openNav() {
   console.log("something")
   document.getElementById("mySidenav").style.width = "250px";
