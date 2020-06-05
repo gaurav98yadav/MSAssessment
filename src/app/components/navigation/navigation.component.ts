@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { SessionStorageService } from 'angular-web-storage';
 import { ProjectServiceService } from 'src/app/providers/project-service.service';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-navigation',
@@ -15,14 +16,16 @@ export class NavigationComponent implements OnInit {
   courses = ["React", "Angular","Java","SQL","React Native"]
   course:string= "";
   test_name:string="";
-  danger = "none"
+  danger = "none";
+  wow= "none";
+  gaurav = "";
   category: string = "";
   questions: string = "";
   description: string = "";
   categorydisplay = "none";
   grad_id: number = 0;
   feedback: string = "";  
-  total_marks: number =0;
+  total_marks: number=0;
   build_marks: number=0;
   testing_marks:number=0;
   process_marks:number=0;
@@ -67,6 +70,12 @@ export class NavigationComponent implements OnInit {
 
   postassessment() {
     console.log("called");
+      if(this.grad_id==0 || this.course=="" || this.test_name=="" || this.category=="")
+      this.danger = "block";
+      else if(this.build_marks>100 || this.total_marks>100 || this.testing_marks>100 || this.process_marks>100 || this.process_marks<0 || this.testing_marks<0 || this.total_marks<0 || this.build_marks<0)
+      this.wow="block";
+      else
+      {
       if(this.category==="Project")
       {
             this.projectService.addProject(1,this.session.get("1").empId,this.grad_id,this.categories.indexOf(this.category)+1,this.feedback,this.build_marks,this.process_marks,this.testing_marks,this.course,this.test_name).subscribe((res) => {
@@ -96,6 +105,7 @@ export class NavigationComponent implements OnInit {
           }
         });
       }
+    }
     }
 
   categoryselect(id: number) {

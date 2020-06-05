@@ -131,3 +131,140 @@
       color:white;
       text-decoration:none;
       }
+      .main {
+        width: 100%;
+        height: 100%;
+    }
+
+    .btn-google {
+        color: white;
+        background-color: #ea4335;
+    }
+
+    .header {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 10px;
+        padding-left: 10px;
+        overflow: hidden;
+        height: 80px;
+        background-color: #230924;
+    }
+
+    .logo {
+        order: 0;
+        display: block;
+        height: 100px;
+        padding: 0%;
+    }
+
+    .lgnbtn {
+        margin-left: auto;
+        order: 2;
+        display: block;
+        color: white;
+        text-align: center;
+        padding-right: 20px;
+    }
+
+    .Login {
+        background-color: #230924;
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 4px;
+        color: white;
+    }
+
+    .profile {
+        order: 2;
+        display: block;
+        color: white;
+        text-align: center;
+        padding-right: 20px;
+        border-radius: 50%;
+    }
+
+    img {
+        height: inherit;
+    }
+
+    .ask {
+        background-color: #230924;
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 4px;
+        color: white;
+    }
+
+    .form-control:focus {
+        box-shadow: none;
+    }
+
+    .search {
+        background-color: white;
+        max-height: 200px;
+        width: inherit;
+        position: absolute;
+        overflow-y: scroll;
+        z-index: 0;
+        border: 1px solid;
+        border-color: #a8acbc #babdcc #c0c3d2;
+        margin-top: -25px;
+    }
+
+    .results {
+        list-style-type: none;
+        padding: 0;
+
+    }
+
+    .results li {
+        padding-left: 10px;
+    }
+
+    .results li:hover {
+        background-color: #338cdf;
+        color: #fff;
+        text-shadow: 0 -1px rgba(0, 0, 0, 0.3);
+        border-color: #2380dd #2179d5 #1a60aa;
+        background-color: #338cdf;
+
+    }
+    
+    .dropdownbtn
+    {
+        background-color: #230924;
+        color: #fff;
+        height: 40px;
+        border: 1px;
+        border-radius: 8px;
+;
+        
+    }
+    .dropdown
+    {
+        margin:auto;
+    }
+    .listcategory li:hover
+    {
+        background-color: #007bff;
+        color: #fff;
+        text-shadow: 0 -1px rgba(0, 0, 0, 0.3);
+        border-color: #2380dd #2179d5 #1a60aa;
+        
+    }
+    .listcategory{
+        padding: 0;
+        list-style: none;
+        position: fixed;
+        background-color: white;
+        border: 1px solid;
+        border-color: #a8acbc #babdcc #c0c3d2;
+        border-radius: 5%;         
+
+    }
+    .home{
+        color: #ffffff;
+    }

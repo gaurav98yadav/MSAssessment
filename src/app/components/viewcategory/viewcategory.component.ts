@@ -13,6 +13,7 @@ import { ProjectServiceService } from 'src/app/providers/project-service.service
 export class ViewcategoryComponent implements OnInit {
   categoryid: any;
   assessments=[];
+  arr=[];
   trainer_feedback;
   grad_id:number;
   showModal:boolean
@@ -36,6 +37,7 @@ export class ViewcategoryComponent implements OnInit {
     })
     this.homeservice.viewAssessments(this.categoryid).subscribe((details) => {
       this.assessments.push(details);
+      this.arr=this.assessments[0];
       console.log("question answer",this.assessments[0])
       
     });
@@ -59,6 +61,14 @@ setValues(i:number)
   this.assessment_id=ass[i].assessment_id;
   console.log(this.grad_id);
 
+}
+onSearchChange(gmy:string)
+{
+  console.log(gmy);
+  var ass =this.arr
+  const arr2 = ass.filter(ass => ass.course.startsWith(gmy) || ass.grad_name.startsWith(gmy));
+  console.log(arr2);
+  this.assessments[0]=arr2;
 }
 deleteAssessment(assessment_id:number,final_marks:number,grad_id:number)
 {

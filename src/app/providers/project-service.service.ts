@@ -46,7 +46,7 @@ export class ProjectServiceService {
       build_marks:build_marks,
       testing_marks:testing_marks,
       process_marks:process_marks,
-  },
+  },{responseType: 'text' as 'json'}
   )                                 
 }
 deleteAssessment(assessment_id:number,grad_id:number,total_marks:number,assessment_type:number){
@@ -55,7 +55,7 @@ deleteAssessment(assessment_id:number,grad_id:number,total_marks:number,assessme
     final_marks:total_marks,
     grad_id:grad_id,
     assessment_type:assessment_type
-},
+},{responseType: 'text' as 'json'}
 )                                 
 }
 }

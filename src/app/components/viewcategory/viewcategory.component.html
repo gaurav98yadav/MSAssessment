@@ -19,8 +19,19 @@
 
 <body>
 
+
     <div class="container mt-3">
-        <h2>Great {{categories[categoryid-1]}} Marks of Grads </h2>
+        <div class="main">
+            <h2>Great {{categories[categoryid-1]}} Marks of Grads </h2>  
+            <div class="dropdown">
+                <div class="d-flex justify-content-center">
+                  <div class="searchbar">
+                    <input (input)=onSearchChange($event.target.value) class="search_input" type="text" name="" placeholder="Search...">
+                    <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+                  </div>
+                </div>
+            </div>      
+         </div>
         <table class="table table-hover ">
             <thead>
               <tr>
@@ -29,11 +40,9 @@
                 <th>Trainer ID</th>
                 <th>Course</th> 
                 <th>Test Name</th>
-                <div *ngIf="categoryid==4">
-                <th>Build Marks </th>
-                <th>Process Marks</th>
-                <th>Testing Marks</th>
-                </div>
+                <th><div *ngIf="categoryid==4">Build Marks</div></th>
+                <th><div *ngIf="categoryid==4">Process Marks</div></th>
+                <th><div *ngIf="categoryid==4">Testing Marks</div></th>
                 <th>Total Marks</th>
                 <th>Trainer Feedback</th>
                 <th> Assessment Type</th>
@@ -47,11 +56,9 @@
                 <td>{{assessment.trainer_id}}</td>
                 <td>{{assessment.course}}</td>
                 <td>{{assessment.test_name}}</td>
-                <div *ngIf="categoryid==4">
-                <td>{{assessment.build_marks}}</td>
-                <td>{{assessment.process_marks}}</td>
-                <td>{{assessment.testing_marks}}</td>
-                </div>
+                <td><div *ngIf="categoryid==4">{{assessment.build_marks}}</div></td>
+                <td><div *ngIf="categoryid==4">{{assessment.process_marks}}</div></td>
+                <td><div *ngIf="categoryid==4">{{assessment.testing_marks}}</div></td>
                 <td>{{assessment.final_marks}}</td>
                 <td>{{assessment.trainer_feedback}}</td>
                 <td>{{categories[categoryid-1]}}</td>
@@ -81,19 +88,19 @@
                             </div>
                             <div class="textarea" style="display: flex;flex-direction: column;"*ngIf="categoryid==4">
                                 <label>Build Marks</label>
-                                <input type="text" [(ngModel)]="build_marks" place-holder="Enter Marks">
+                                <input type="number" [(ngModel)]="build_marks" place-holder="Enter Marks">
                             </div>
                             <div class="textarea" style="display: flex;flex-direction: column;"*ngIf="categoryid==4">
                                 <label>Process Marks</label>
-                                <input type="text" [(ngModel)]="process_marks" place-holder="Enter Marks">
+                                <input type="number" [(ngModel)]="process_marks" place-holder="Enter Marks">
                             </div>
                             <div class="textarea" style="display: flex;flex-direction: column;" *ngIf="categoryid==4"> 
                                 <label>Testing Marks</label>
-                                <input type="text" [(ngModel)]="testing_marks" place-holder="Enter Marks">
+                                <input type="number" [(ngModel)]="testing_marks" place-holder="Enter Marks">
                             </div>
                             <div class="textarea" style="display: flex;flex-direction: column;"*ngIf="categoryid!=4">
                                 <label>Total Marks</label>
-                                <input type="text" [(ngModel)]="total_marks" place-holder="Enter Marks">
+                                <input type="number" [(ngModel)]="total_marks" place-holder="Enter Marks">
                             </div>
                             <div class="question" style="display:flex;flex-direction: column;">
                                 <label>Feedback</label>

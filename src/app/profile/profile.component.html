@@ -21,15 +21,7 @@
 
     <div class="container mt-3">
       <div class="main">
-        <h2>Great Grads </h2>  
-        <div class="dropdown">
-            <div class="d-flex justify-content-center">
-              <div class="searchbar">
-                <input (input)=onSearchChange($event.target.value) class="search_input" type="text" name="" placeholder="Search...">
-                <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
-              </div>
-            </div>
-        </div>      
+        <h2>{{grad.grad_name}}</h2>      
      </div>
         <table class="table table-hover ">
             <thead>
@@ -39,18 +31,44 @@
                 <th>Grad_College</th>
                 <th>Grad_Location</th>
                 <th>Grad_Year</th>
-                <th>Grad Marks</th>
+                <th>Overall Quiz Marks</th>
+                <th>Overall MCQ Marks</th>
+                <th>Overall Assignment Marks</th>
+                <th>Overall Project Marks</th>
+                <th>Overall Marks</th>
               </tr>
             </thead>
             <tbody>
-              <tr style="cursor: pointer;" (click)=profile(grad.grad_id) *ngFor = "let grad of questions[0]">
+             <tr>
                 <td>{{grad.grad_id}}</td>
-                <td style="cursor: pointer;" (click)=profile(grad.grad_id)>{{grad.grad_name}}</td>
+                <td >{{grad.grad_name}}</td>
                 <td>{{grad.grad_college}}</td>
                 <td>{{grad.grad_location}}</td>
                 <td>{{grad.grad_year}}</td>
+                <td>{{grad.quiz_marks}}</td>
+                <td>{{grad.mcq_marks}}</td>
+                <td>{{grad.assignment_marks}}</td>
+                 <td>{{grad.project_marks}}</td>
                 <td>{{grad.total_marks}}</td>
-                
+              </tr>
+            </tbody>
+          </table>
+          <h2>{{grad.grad_name}}</h2>
+          <table class="table table-hover ">
+            <thead>
+              <tr>
+                <th>Test Name</th>
+                <th>Course</th>
+                <th>Test Type</th>
+                <th>Marks Obtained</th>
+              </tr>
+            </thead>
+            <tbody>
+             <tr *ngFor = "let marks of tests">
+                <td>{{marks.test_name}}</td>
+                <td >{{marks.course}}</td>
+                <td>{{categories[marks.assessment_type-1]}}</td>
+                <td>{{marks.final_marks}}</td>
               </tr>
             </tbody>
           </table>

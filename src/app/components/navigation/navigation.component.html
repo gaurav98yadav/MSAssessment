@@ -6,143 +6,7 @@
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
     <style>
-        .main {
-            width: 100%;
-            height: 100%;
-        }
-
-        .btn-google {
-            color: white;
-            background-color: #ea4335;
-        }
-
-        .header {
-            margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            padding-top: 10px;
-            padding-left: 10px;
-            overflow: hidden;
-            height: 80px;
-            background-color: #230924;
-        }
-
-        .logo {
-            order: 0;
-            display: block;
-            height: 100px;
-            padding: 0%;
-        }
-
-        .lgnbtn {
-            margin-left: auto;
-            order: 2;
-            display: block;
-            color: white;
-            text-align: center;
-            padding-right: 20px;
-        }
-
-        .Login {
-            background-color: #230924;
-            font-size: 20px;
-            font-weight: bold;
-            border-radius: 4px;
-            color: white;
-        }
-
-        .profile {
-            order: 2;
-            display: block;
-            color: white;
-            text-align: center;
-            padding-right: 20px;
-            border-radius: 50%;
-        }
-
-        img {
-            height: inherit;
-        }
-
-        .ask {
-            background-color: #230924;
-            font-size: 20px;
-            font-weight: bold;
-            border-radius: 4px;
-            color: white;
-        }
-
-        .form-control:focus {
-            box-shadow: none;
-        }
-
-        .search {
-            background-color: white;
-            max-height: 200px;
-            width: inherit;
-            position: absolute;
-            overflow-y: scroll;
-            z-index: 0;
-            border: 1px solid;
-            border-color: #a8acbc #babdcc #c0c3d2;
-            margin-top: -25px;
-        }
-
-        .results {
-            list-style-type: none;
-            padding: 0;
-
-        }
-
-        .results li {
-            padding-left: 10px;
-        }
-
-        .results li:hover {
-            background-color: #338cdf;
-            color: #fff;
-            text-shadow: 0 -1px rgba(0, 0, 0, 0.3);
-            border-color: #2380dd #2179d5 #1a60aa;
-            background-color: #338cdf;
-
-        }
-        
-        .dropdownbtn
-        {
-            background-color: #230924;
-            color: #fff;
-            height: 40px;
-            border: 1px;
-            border-radius: 8px;
-;
-            
-        }
-        .dropdown
-        {
-            margin:auto;
-        }
-        .listcategory li:hover
-        {
-            background-color: #007bff;
-            color: #fff;
-            text-shadow: 0 -1px rgba(0, 0, 0, 0.3);
-            border-color: #2380dd #2179d5 #1a60aa;
-            
-        }
-        .listcategory{
-            padding: 0;
-            list-style: none;
-            position: fixed;
-            background-color: white;
-            border: 1px solid;
-            border-color: #a8acbc #babdcc #c0c3d2;
-            border-radius: 5%;         
-
-        }
-        .home{
-            color: #ffffff;
-        }
+       
     </style>
 </head>
 
@@ -177,16 +41,8 @@
             <div class="home" (click)="homeredirect()" style="cursor: pointer;">
                <h2> Accolite University </h2> 
             </div>
-            <div class="dropdown">
-                    <div class="d-flex justify-content-center">
-                      <div class="searchbar">
-                        <input class="search_input" type="text" name="" placeholder="Search...">
-                        <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
-                      </div>
-                    </div>
-                </div>
                 <div style="margin-left: 50px;">
-                    <button type="button"  style="margin-right:20px; background-color: #230924 ;border-color: white;" class="btn btn-primary" (click)="viewTrends()">
+                    <button type="button"  style="margin-left: 400px; margin-right: 20px; background-color: #230924 ;border-color: white;" class="btn btn-primary" (click)="viewTrends()">
                     Trends
                 </button> 
                 
@@ -218,8 +74,9 @@ aria-hidden="true">
     <div class="modal-body mx-4">
       <!--Body-->
       <div class="md-form mb-5">
+          <small class="text-danger" [style.display]="danger">*please enter all the details</small>
         <label>Grad_ID</label>
-        <input type="text" class="form-control validate" required [(ngModel)]="grad_id">
+        <input type="number" class="form-control validate" required [(ngModel)]="grad_id">
       </div> 
 
       <div class="md-form mb-5">                             
@@ -235,25 +92,29 @@ aria-hidden="true">
         </select>
        </div>
        <div class="md-form mb-5">
+        <small class="text-danger" [style.display]="wow">*please enter marks between 0 and 100</small>
         <label data-error="wrong" data-success="right" for="Form-email1">Test Name</label>
         <input type="text" id="Form-email1" class="form-control validate" [(ngModel)]="test_name">
       </div>    
      <div class="md-form mb-5" *ngIf="checkCategory()">
-        <label data-error="wrong" data-success="right" for="Form-email1">Build Marks</label>
-        <input type="text" id="Form-email1" class="form-control validate" [(ngModel)]="build_marks">
-      </div>  
+        <label data-error="wrong" data-success="right" for="Form-email1" >Build Marks</label>
+        <input type="number" id="Form-email1" class="form-control validate" [(ngModel)]="build_marks">
+    </div>  
       <div class="md-form mb-5" *ngIf="checkCategory()">
-        <label data-error="wrong" data-success="right" for="Form-email1">Process Marks</label>
-        <input type="text" id="Form-email1" class="form-control validate" [(ngModel)]="process_marks">
-      </div>  
+        <label data-error="wrong" data-success="right" for="Form-email1" >Process Marks</label>
+        <input type="number" id="Form-email1" class="form-control validate" [(ngModel)]="process_marks">
+    </div>  
+ 
       <div class="md-form mb-5" *ngIf="checkCategory()" >
-        <label data-error="wrong" data-success="right" for="Form-email1">Testing Marks</label>
-        <input type="text" id="Form-email1" class="form-control validate" [(ngModel)]="testing_marks">
-      </div>  
+        <label data-error="wrong" data-success="right" for="Form-email1" >Testing Marks</label>
+        <input type="number" id="Form-email1" class="form-control validate" [(ngModel)]="testing_marks">
+    </div>  
+
       <div class="md-form mb-5" *ngIf="!checkCategory()">
-        <label data-error="wrong" data-success="right" for="Form-email1">Total Marks</label>
-        <input type="text" id="Form-email1" class="form-control validate" [(ngModel)]="total_marks">
-      </div>  
+        <label data-error="wrong" data-success="right" for="Form-email1" >Total Marks</label>
+        <input type="number" id="Form-email1" class="form-control validate" [(ngModel)]="total_marks">
+    </div>  
+ 
       <div class="md-form mb-5">
         <label data-error="wrong" data-success="right" for="Form-email1">Feedback</label>
         <input type="text" id="Form-email1" class="form-control validate" [(ngModel)]="feedback">
@@ -280,5 +141,4 @@ aria-hidden="true">
     </div>
 
 </body>
-
 </html>
