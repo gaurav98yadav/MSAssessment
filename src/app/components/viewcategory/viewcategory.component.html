@@ -35,16 +35,16 @@
         <table class="table table-hover ">
             <thead>
               <tr>
-                <th>Grad ID</th>
-                <th>Grad Name</th>
-                <th>Trainer ID</th>
-                <th>Course</th> 
-                <th>Test Name</th>
-                <th><div *ngIf="categoryid==4">Build Marks</div></th>
-                <th><div *ngIf="categoryid==4">Process Marks</div></th>
-                <th><div *ngIf="categoryid==4">Testing Marks</div></th>
-                <th>Total Marks</th>
-                <th>Trainer Feedback</th>
+                <th [mdbTableSort]="assessments[0]" sortBy="grad_id">Grad ID  <mdb-icon fas icon="sort"></mdb-icon></th>
+                <th [mdbTableSort]="assessments[0]" sortBy="grad_name">Grad Name  <mdb-icon fas icon="sort"></mdb-icon></th>
+                <th [mdbTableSort]="assessments[0]" sortBy="trainer_id">Trainer ID  <mdb-icon fas icon="sort"></mdb-icon></th>
+                <th [mdbTableSort]="assessments[0]" sortBy="course">Course  <mdb-icon fas icon="sort"></mdb-icon></th> 
+                <th [mdbTableSort]="assessments[0]" sortBy="test_name">Test Name  <mdb-icon fas icon="sort"></mdb-icon></th>
+                <th [mdbTableSort]="assessments[0]" sortBy="build_marks" ><div *ngIf="categoryid==4">Build Marks  <mdb-icon fas icon="sort"></mdb-icon></div></th>
+                <th [mdbTableSort]="assessments[0]" sortBy="process_marks"><div *ngIf="categoryid==4">Process Marks  <mdb-icon fas icon="sort"></mdb-icon></div></th>
+                <th [mdbTableSort]="assessments[0]" sortBy="testing_marks"><div *ngIf="categoryid==4">Testing Marks  <mdb-icon fas icon="sort"></mdb-icon></div></th>
+                <th [mdbTableSort]="assessments[0]" sortBy="final_marks">Total Marks  <mdb-icon fas icon="sort"></mdb-icon></th>
+                <th >Trainer Feedback</th>
                 <th> Assessment Type</th>
                 <th colspan="2" text-align="center">Actions</th>
               </tr>
@@ -113,6 +113,7 @@ aria-hidden="true">
       </div>
 
       <div class="text-center mb-3">
+        <p style="color: red;" [style.display]=wow>PLEASE ENTER BETWEEN 0 and 100</p>
         <button type="button" (click)="editassessment()" class="btn blue-gradient btn-block btn-rounded z-depth-1a" >Submit</button>
       </div>
     </div>

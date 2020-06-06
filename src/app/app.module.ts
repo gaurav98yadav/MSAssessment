@@ -24,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TrendsComponent } from './components/trends/trends.component';
 import { TrainingmaterialComponent } from './components/trainingmaterial/trainingmaterial.component';
 import { ProfileComponent } from './profile/profile.component';
+import { WavesModule, TableModule, IconsModule } from 'angular-bootstrap-md';
 
 const config=new AuthServiceConfig([
   {
@@ -60,11 +61,14 @@ const config=new AuthServiceConfig([
     AppRoutingModule,
     NgbModule,
     SocialLoginModule,
+    WavesModule,
+    IconsModule,
     ChartsModule,
     FormsModule,
     MatTabsModule,
     ReactiveFormsModule,
     AngularWebStorageModule,
+    TableModule,
     BrowserAnimationsModule,
     
   ],

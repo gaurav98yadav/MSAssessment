@@ -33,17 +33,16 @@
      </div>
         <table class="table table-hover ">
             <thead>
-              <tr>
-                <th>Grad_ID</th>
-                <th sortable="grad_name" (sort)="onSort($event)">Grad_Name</th>
-                <th>Grad_College</th>
-                <th>Grad_Location</th>
-                <th>Grad_Year</th>
-                <th>Grad Marks</th>
-              </tr>
+              <th [mdbTableSort]="questions[0]" sortBy="grad_id">Grad_Id  <mdb-icon fas icon="sort"></mdb-icon></th>
+              <th [mdbTableSort]="questions[0]" sortBy="grad_name">Grad_Name  <mdb-icon fas icon="sort"></mdb-icon></th>
+              <th [mdbTableSort]="questions[0]" sortBy="grad_college">College  <mdb-icon fas icon="sort"></mdb-icon></th>
+              <th [mdbTableSort]="questions[0]" sortBy="grad_location">Location  <mdb-icon fas icon="sort"></mdb-icon></th>
+              <th [mdbTableSort]="questions[0]" sortBy="grad_year">Year  <mdb-icon fas icon="sort"></mdb-icon></th>
+              <th [mdbTableSort]="questions[0]" sortBy="total_marks">Total Marks  <mdb-icon fas icon="sort"></mdb-icon></th>
+
             </thead>
             <tbody>
-              <tr style="cursor: pointer;" (click)=profile(grad.grad_id) *ngFor = "let grad of questions[0]">
+              <tr style="cursor: pointer;" (click)=profile(grad.grad_id) *ngFor = "let grad of questions[0],let i=index">
                 <td>{{grad.grad_id}}</td>
                 <td style="cursor: pointer;" (click)=profile(grad.grad_id)>{{grad.grad_name}}</td>
                 <td>{{grad.grad_college}}</td>

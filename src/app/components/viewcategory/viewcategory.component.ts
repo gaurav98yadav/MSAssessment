@@ -18,6 +18,7 @@ export class ViewcategoryComponent implements OnInit {
   grad_id:number;
   showModal:boolean
   assessment_id:number;
+  wow="none";
   total_marks:number;
   build_marks:number;
   testing_marks:number;
@@ -81,9 +82,13 @@ deleteAssessment(assessment_id:number,final_marks:number,grad_id:number)
   }
   editassessment()
   {
+    if(this.total_marks>100 || this.total_marks<0 || this.build_marks<0 || this.build_marks>100 || this.process_marks>100 || this.process_marks<0 || this.testing_marks>100 || this.testing_marks<0)
+    this.wow="block"
+    else{
     this.projectservice.editAssessment(this.assessment_id,this.grad_id,this.categoryid,this.trainer_feedback,this.total_marks,this.build_marks,this.testing_marks,this.process_marks).subscribe((res) => {
       console.log(res);
       window.location.reload();
         });
+      }
   }
 }

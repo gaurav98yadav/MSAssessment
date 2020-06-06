@@ -1,22 +1,33 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { HomeService } from 'src/app/providers/homeService/home.service';
 import {  SessionStorageService } from 'angular-web-storage';
+import { MdbTablePaginationComponent, MdbTableDirective } from 'angular-bootstrap-md';
+
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent implements OnInit {
+  @ViewChild(MdbTablePaginationComponent, { static: true }) mdbTablePagination: MdbTablePaginationComponent;
+  @ViewChild(MdbTableDirective, { static: true }) mdbTable: MdbTableDirective
   questions=[]
   arr=[]
+  previous: any = [];
+  headElements=['Grad_ID','Grad_Name','College','Location','Year','Marks']
   constructor(public session: SessionStorageService,
+    private cdRef: ChangeDetectorRef,
     private router: Router,
      public homeservice:HomeService) { 
       this.homeservice.viewGrads().subscribe((details) => {
         this.questions.push(details);
         this.arr=this.questions[0];
+        this.mdbTable.setDataSource(this.questions);
+        this.questions = this.mdbTable.getDataSource();
+        this.previous = this.mdbTable.getDataSource();
         console.log(this.questions[0])
         
       });
@@ -45,6 +56,11 @@ export class HomeComponent implements OnInit {
   console.log(arr2);
   this.questions[0]=arr2;
 }
-
+ngAfterViewInit() {
+  this.mdbTablePagination.setMaxVisibleItemsNumberTo(2);
+  this.mdbTablePagination.calculateFirstItemIndex();
+  this.mdbTablePagination.calculateLastItemIndex();
+  this.cdRef.detectChanges();
+}
   
 }
