@@ -55,19 +55,15 @@ export class ViewcategoryComponent implements OnInit {
 }
 setValues(i:number)
 {
-  console.log(i);
   let ass= this.assessments[0];
   this.grad_id=ass[i].grad_id;
   this.assessment_id=ass[i].assessment_id;
-  console.log(this.grad_id);
 
 }
 onSearchChange(gmy:string)
 {
-  console.log(gmy);
   var ass =this.arr
   const arr2 = ass.filter(ass => ass.course.startsWith(gmy) || ass.grad_name.startsWith(gmy));
-  console.log(arr2);
   this.assessments[0]=arr2;
 }
 deleteAssessment(assessment_id:number,final_marks:number,grad_id:number)
@@ -78,7 +74,6 @@ deleteAssessment(assessment_id:number,final_marks:number,grad_id:number)
 }
   checkTrainer(trainer_id:number)
   {
-    console.log(trainer_id)
     if(this.session.get("1").empId==trainer_id)
     return true;
     else 

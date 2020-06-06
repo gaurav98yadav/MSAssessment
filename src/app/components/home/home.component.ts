@@ -22,7 +22,6 @@ export class HomeComponent implements OnInit {
       });
 
      }
-
   ngOnInit() {
     if(this.session.get("2"))
     {
