@@ -25,9 +25,6 @@ export class HomeComponent implements OnInit {
       this.homeservice.viewGrads().subscribe((details) => {
         this.questions.push(details);
         this.arr=this.questions[0];
-        this.mdbTable.setDataSource(this.questions);
-        this.questions = this.mdbTable.getDataSource();
-        this.previous = this.mdbTable.getDataSource();
         console.log(this.questions[0])
         
       });
@@ -55,12 +52,6 @@ export class HomeComponent implements OnInit {
   const arr2 = ass.filter(ass => ass.grad_name.startsWith(gmy) ||  ass.grad_college.startsWith(gmy) || ass.grad_location.startsWith(gmy));
   console.log(arr2);
   this.questions[0]=arr2;
-}
-ngAfterViewInit() {
-  this.mdbTablePagination.setMaxVisibleItemsNumberTo(2);
-  this.mdbTablePagination.calculateFirstItemIndex();
-  this.mdbTablePagination.calculateLastItemIndex();
-  this.cdRef.detectChanges();
 }
   
 }
